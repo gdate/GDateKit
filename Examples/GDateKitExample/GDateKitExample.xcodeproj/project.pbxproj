@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		9F5EBBA72D09EB1D00806433 /* GDateKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9F5EBBA62D09EB1D00806433 /* GDateKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		9F5EBB722D09E75F00806433 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F5EBBA72D09EB1D00806433 /* GDateKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +130,7 @@
 			);
 			name = GDateKitExample;
 			packageProductDependencies = (
+				9F5EBBA62D09EB1D00806433 /* GDateKit */,
 			);
 			productName = GDateKitExample;
 			productReference = 9F5EBB5B2D09E75E00806433 /* GDateKitExample.app */;
@@ -208,6 +214,9 @@
 			);
 			mainGroup = 9F5EBB522D09E75E00806433;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				9F5EBBA52D09EB1D00806433 /* XCLocalSwiftPackageReference "../../../GDateKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 9F5EBB5C2D09E75E00806433 /* Products */;
 			projectDirPath = "";
@@ -293,10 +302,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GDateKitExample/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = Main.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -321,10 +331,11 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = GDateKitExample/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = Main.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -569,6 +580,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		9F5EBBA52D09EB1D00806433 /* XCLocalSwiftPackageReference "../../../GDateKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../../GDateKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9F5EBBA62D09EB1D00806433 /* GDateKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GDateKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9F5EBB532D09E75E00806433 /* Project object */;
 }
