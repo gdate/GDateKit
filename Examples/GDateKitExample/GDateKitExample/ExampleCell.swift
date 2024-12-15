@@ -13,6 +13,7 @@ final class ExampleCell: UICollectionViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.textAlignment = .center
         label.font = .systemFont(ofSize: 14)
         label.textColor = .black
         return label
@@ -30,10 +31,17 @@ final class ExampleCell: UICollectionViewCell {
 
 private extension ExampleCell {
     func setupView() {
+        contentView.layer.cornerRadius = 8
+        contentView.layer.borderColor = UIColor.lightGray.cgColor
+        contentView.layer.borderWidth = 1
+        
         contentView.addSubview(titleLabel)
+        
         NSLayoutConstraint.activate([
-            titleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+            titleLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
+            titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 8),
+            titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -8)
         ])
     }
 }
@@ -51,21 +59,32 @@ extension ExampleCell: InputAppliable {
 @available(iOS 17.0, *)
 #Preview(traits: .sizeThatFitsLayout) {
     let items = [
-        ExampleCell.Input(titleText: "Hello, World!"),
-        ExampleCell.Input(titleText: "Hello, World!"),
+        ExampleCell.Input(titleText: "Short"),
+        ExampleCell.Input(titleText: "This is a medium length text."),
+        ExampleCell.Input(titleText: "Here is a longer text that you can use to see how it looks."),
     ]
-    let layoutProvider = { () -> UICollectionViewCompositionalLayout in
+    
+    let layoutProvider: () -> UICollectionViewCompositionalLayout = {
         UICollectionViewCompositionalLayout { _, _ in
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1), heightDimension: .absolute(20))
+            let itemSize = NSCollectionLayoutSize(widthDimension: .estimated(56), heightDimension: .absolute(37))
             let item = NSCollectionLayoutItem(layoutSize: itemSize)
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: itemSize, subitems: [item])
-            return NSCollectionLayoutSection(group: group)
+            let groupSize = NSCollectionLayoutSize(widthDimension: .estimated(56), heightDimension: .absolute(69))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+            group.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0)
+            let section = NSCollectionLayoutSection(group: group)
+            section.interGroupSpacing = 8
+            section.orthogonalScrollingBehavior = .continuous
+            section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16)
+            return section
         }
     }
     UICollectionViewPreview(
         items: items,
         cellProvider: { ExampleCell() },
-        layoutProvider: layoutProvider) { cell, input in
+        layoutProvider: layoutProvider,
+        cellConfigurator: { cell, input in
             cell.apply(input: input)
         }
+    )
+    .frame(height: 69)
 }
